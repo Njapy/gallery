@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notion Sliding Gallery Widget</title>
+  <style>
+    #gallery-container {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    #image-slider {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .gallery-image {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="gallery-container">
+    <div id="image-slider"></div>
+  </div>
+
+  <script>
+    const imageSlider = document.getElementById('image-slider');
+    const images = [
+      'image1.jpg',
+      'image2.jpg',
+      'image3.jpg',
+      // Add more image URLs as needed
+    ];
+
+    let currentIndex = 0;
+
+    function showImage(index) {
+      imageSlider.style.transform = `translateX(${-index * 100}%)`;
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage(currentIndex);
+    }
+
+    // Preload images for smoother transitions
+    images.forEach((imageUrl) => {
+      const img = new Image();
+      img.src = imageUrl;
+    });
+
+    // Display the first image
+    showImage(currentIndex);
+
+    // You can add buttons or gestures to navigate through images
+    // For simplicity, let's add next and previous buttons
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowRight') {
+        nextImage();
+      } else if (event.key === 'ArrowLeft') {
+        prevImage();
+      }
+    });
+  </script>
+</body>
+</html>
