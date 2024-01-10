@@ -30,7 +30,7 @@
     const imageSlider = document.getElementById('image-slider');
     const images = [
       'https://github.com/Njapy/gallery/blob/main/IMG_4392.JPG?raw=true',
-      'image2.jpg',
+      'https://github.com/Njapy/gallery/blob/main/IMG_4384.JPG?raw=true',
       'image3.jpg',
       // Add more image URLs as needed
     ];
